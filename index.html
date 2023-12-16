@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 1. Запитати у користувача ім'я.
+        // 2. Запитати у користувача прізвище.
+        // 3. Запитати в користувача окремо, число/місяць/рік народження 
+        //                  (кожне значення має бути записано в окрему змінну і явно наведено до числа).
+        // 4. Обчислити хто користувач по гороскопу.
+        // 5. Обчислити чи народився користувач у високосний рік.
+        // 6. Вивести на сторінку в браузері результуючий рядок такого змісту:
+        //         Якщо користувач народився високосний рік
+        //     User Bio: John Doe, 34 роки (Leap year), Scorpio ♏;
+        //         Інакше (Зверніть увагу, не повинно бути додаткових прогалин).
+        //     User Bio: John Doe, 34 роки, Scorpio ♏; 
+
+        let newUser = {
+            name: undefined,
+            surName: undefined,
+            day: NaN,
+            month: NaN,
+            year: NaN,
+        }
+
+        let name = prompt("Вкажіть своє ім'я")
+        let surName = prompt('Вкажіть своє прізвище')
+
+        let day = +prompt('Вкажіть число (цифрами), коли Ви народились')
+        let month = +prompt('Вкажіть місяць (цифрами), коли Ви народились')
+        let year = +prompt('Вкажіть рік (4 цифри), коли Ви народились')
+
+        const DATE = 2023
+
+        let age = DATE - year
+
+        let leapYear = ''
+
+        let sign = ''
+        
+        if((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+            sign = '♒ Aquarius'            
+        } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+            sign = '♓ Pisces'
+        } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+            sign = '♈ Aries'
+        } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+            sign = '♉ Taurus'
+        } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
+            sign = '♊ Gemini'
+        } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
+            sign = '♋ Cancer'
+        } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+            sign = '♌ Leo'
+        } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+            sign = '♍ Virgo'
+        } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
+            sign = '♎ Libra'
+        } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
+            sign = '♏ Scorpio'
+        } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+            sign = '♐ Sagittarius'
+        } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+            sign = '♑ Capricorn'
+        } else {
+            console.error('Невірно вказані число та місяць')
+        }
+
+        if ((year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0)) {
+                leapYear = 'Leap Year'
+                console.log(name + ' ' + surName + ', ' + age + ' роки ' + ' (' + leapYear + '), ' + sign)
+            } else {
+                console.log(name + ' ' + surName + ', ' + age + ' роки, ' + sign)
+            }
+
+    </script>
+</body>
+</html>
